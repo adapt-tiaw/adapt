@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="/login.css">
+    <title>Login - ADAPT</title>
+</head>
+<body class="imgduv" style="background-image: url(imagens/fperfis.jpg); background-repeat: no-repeat;">
+    <div id="logreg-forms">
+        <form class="form-signin">
+            <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Entre ou Inscreva-se </h1>
+            
+            <input type="email" id="inputEmail" class="form-control" placeholder="Email" required="" autofocus="">
+            <input type="password" id="inputPassword" class="form-control" placeholder="Senha" required="">
+            
+            <button class="btn btn-success btn-block" type="submit" ><i class="fas fa-sign-in-alt"></i> Entrar </button>
+
+            <hr>
+            <!-- <p>Don't have an account!</p>  -->
+            <button class="btn btn-primary btn-block" type="button" id="btn-signup"><i class="fas fa-user-plus"></i> Crie uma conta</button>
+            </form>
+            <a href="adapt.html"><i class="fas fa-angle-left" style="margin-left: 20px;"></i> Voltar para o início</a>
+
+            <form action="/reset/password/" class="form-reset">
+                <input type="email" id="resetEmail" class="form-control" placeholder="Email" required="" autofocus="">
+                <button class="btn btn-primary btn-block" type="submit">Redefinir senha</button>
+                <a href="#" id="cancel_reset"><i class="fas fa-angle-left"></i> Voltar</a>
+            </form>
+            
+            <form action="/signup/" class="form-signup">
+                                
+                
+                <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Inscreva-se </h1>
+                <input type="text" id="user-name" class="form-control" placeholder="Nome completo" required="" autofocus="">
+                <input type="email" id="user-email" class="form-control" placeholder="Email" required autofocus="">
+                <input type="password" id="user-pass" class="form-control" placeholder="Senha" required autofocus="">
+                <input type="password" id="user-repeatpass" class="form-control" placeholder="Repita a senha" required autofocus="">
+
+                <button class="btn btn-primary btn-block" type="submit"><i class="fas fa-user-plus"></i> Inscrever-se </button>
+                <a href="#" id="cancel_signup"><i class="fas fa-angle-left"></i> Voltar</a>
+            </form>
+            <br>
+            
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="/login.js"></script>
+</body>
+</html>

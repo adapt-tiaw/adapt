@@ -1,4 +1,13 @@
 
+
+#escolha{
+  margin-top: 10px;
+  margin-left: 0px;
+  margin-bottom: 0px;
+  margin-right: 0px;
+  
+}
+
 .cta-100 {
   margin-top: 100px;
   padding-left: 8%;
@@ -13,7 +22,7 @@
 }
 .mt{float: left;margin-top: -20px;padding-top: 20px;}
 .bg-blue-ui {
-  background-color: #708198 !important;
+  background-color: #2470db !important;
 }
 figure img{width:300px;}
 

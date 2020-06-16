@@ -1,3 +1,5 @@
+window.onload = setInitialValue;
+
 // Busca dados cadastrados no local storage
 function readLocalStorage() {
   let stringData = localStorage.getItem('db');
@@ -42,4 +44,21 @@ function toDo() {
   saveOnLocalStorage(db);
 
   window.location.href = `adapt.html`;
+}
+
+function setInitialValue() {
+  let fieldNameTask = document.getElementById('nameTask');
+  let fieldDescriptionTask = document.getElementById('descriptionTask');
+
+  let db = readLocalStorage();
+
+  let userEmail = db.session.email;
+  let user = db.users.find(user => user.email === userEmail);
+
+  if (user.todos) {
+    let { title, description } = user.todos[user.todos.length - 1];
+
+    fieldNameTask.value = title;
+    fieldDescriptionTask.value = description;
+  }
 }

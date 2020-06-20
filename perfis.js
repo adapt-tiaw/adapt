@@ -1,3 +1,17 @@
+window.onload = validateUserLogged;
+
+function validateUserLogged() {
+  let divBotao = document.getElementsByClassName('mt');
+
+  let db = readLocalStorage();
+
+  if (!db.session.loged) {
+    Array.from(divBotao).forEach(button => {
+      button.innerHTML = '';
+    });
+  }
+}
+
 // Busca dados cadastrados no local storage
 function readLocalStorage() {
   let stringData = localStorage.getItem('db');

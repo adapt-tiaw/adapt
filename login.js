@@ -91,7 +91,7 @@ function login() {
 
       saveOnLocalStorage(db);
 
-      window.location.href = 'adapt.html';
+      window.location.href = 'index.html';
     }
   } else {
     alert('E-mail não cadastrado, cadastre primeiro');

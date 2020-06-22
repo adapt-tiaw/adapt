@@ -8,7 +8,7 @@ function readLocalStorage() {
     return JSON.parse(stringData);
   } else {
     alert('Usuario não autenticado!');
-    window.location.href = 'adapt.html';
+    window.location.href = 'index.html';
   }
 }
 
@@ -43,7 +43,7 @@ function toDo() {
 
   saveOnLocalStorage(db);
 
-  window.location.href = `adapt.html`;
+  window.location.href = `index.html`;
 }
 
 function setInitialValue() {

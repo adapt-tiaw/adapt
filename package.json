@@ -2,7 +2,7 @@
   "name": "adapt",
   "version": "1.0.0",
   "scripts": {
-    "start": "serve",
+    "start": "serve"
   },
   "dependencies": {
     "serve": "^10.0.1"

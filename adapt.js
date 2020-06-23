@@ -2,9 +2,19 @@ window.onload = setUserStatus;
 
 function readLocalStorage() {
   let stringData = localStorage.getItem('db');
+  let newLocalStorage = {
+    session: {
+      loged: false,
+      email: null,
+    },
+    users: [],
+  };
 
   if (stringData) {
     return JSON.parse(stringData);
+  } else {
+    saveOnLocalStorage(newLocalStorage);
+    return JSON.parse(localStorage.getItem('db'));
   }
 }
 

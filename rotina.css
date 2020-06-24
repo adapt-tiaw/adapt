@@ -17,3 +17,9 @@ body {
   display: flex;
   justify-content: space-evenly;
 }
+
+.btn-excluir {
+  height: 35px;
+  margin-bottom: 10px;
+  outline: 0;
+}

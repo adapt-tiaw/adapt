@@ -43,22 +43,59 @@ function toDo() {
 
   saveOnLocalStorage(db);
 
-  window.location.href = `index.html`;
+  setInitialValue();
 }
 
-function setInitialValue() {
-  let fieldNameTask = document.getElementById('nameTask');
-  let fieldDescriptionTask = document.getElementById('descriptionTask');
+// function setInitialValue() {
+//   let fieldNameTask = document.getElementById('nameTask');
+//   let fieldDescriptionTask = document.getElementById('descriptionTask');
 
+//   let db = readLocalStorage();
+
+//   let userEmail = db.session.email;
+//   let user = db.users.find(user => user.email === userEmail);
+
+//   if (user.todos) {
+//     let { title, description } = user.todos[user.todos.length - 1];
+
+//     fieldNameTask.value = title;
+//     fieldDescriptionTask.value = description;
+//   }
+// }
+
+function setInitialValue() {
   let db = readLocalStorage();
+
+  // Elemento que renderiza todos ja cadastrados
+  let divTodos = document.getElementById('todos');
+
+  console.log(divTodos);
+
+  let response = '';
 
   let userEmail = db.session.email;
   let user = db.users.find(user => user.email === userEmail);
 
-  if (user.todos) {
-    let { title, description } = user.todos[user.todos.length - 1];
+  let todos = user.todos;
+  console.log(todos);
 
-    fieldNameTask.value = title;
-    fieldDescriptionTask.value = description;
+  if (db.session.loged) {
+    response += `<a class="list-group-item list-group-item-action active titleex">Tarefas</a>`;
+
+    todos.forEach(todo => {
+      response += `
+        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">${todo.title}</h5>
+                <small>Excluir</small>
+            </div>
+            <p class="mb-1">${todo.description}</p>
+        </a>
+      `;
+    });
   }
+
+  console.log(response);
+
+  divTodos.innerHTML = response;
 }

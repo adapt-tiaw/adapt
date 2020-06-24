@@ -59,7 +59,7 @@ function setInitialValue() {
 
   let todos = user.todos;
 
-  if (db.session.loged) {
+  if (db.session.loged && user.todos.length > 0) {
     response += `<a class="list-group-item list-group-item-action active titleex">Tarefas</a>`;
 
     todos.forEach((todo, index) => {

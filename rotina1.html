@@ -34,6 +34,29 @@
                         </div>
                         <div class="card-body p-4">
 
+                            <select id="seletedDay" required class="seletor-dia custom-select" onchange="selectedDay()">
+                                <option value="0" selected>Escolha o dia</option>
+                                <option value="domingo">Domingo</option>
+                                <option value="segunda">Segunda</option>
+                                <option value="terca">Terça</option>
+                                <option value="quarta">Quarta</option>
+                                <option value="quinta">Quinta</option>
+                                <option value="sexta">Sexta</option>
+                                <option value="sabado">Sábado</option>
+                            </select>
+
+                            <div class="form-group">
+                                <div class="clock">
+                                    <label for="beginAt">Início: </label>
+                                    <input class="form-control" type="time" id="beginAt" name="beginAt" required>
+                                </div>
+
+                                <div class="clock">
+                                    <label for="endAt">Término: </label>
+                                    <input class="form-control" type="time" id="endAt" name="endAt" required>
+                                </div>
+
+                            </div>
 
                             <div class="form-group">
                                 <div class="input-group mb-2">
@@ -59,8 +82,9 @@
 
                             <div class="botoes">
                                 <a class="btn btn-primary" href="index.html" role="button">Voltar para Início</a>
-                                <button id="botaoAdicionar" class="btn btn-primary" type="submit"
-                                    onclick="toDo()">Adicionar tarefa</button>
+                                <button id="botaoAdicionar" class="btn btn-primary" onclick="toDo()">
+                                    Adicionar tarefa
+                                </button>
 
                             </div>
 

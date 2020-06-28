@@ -1,4 +1,4 @@
-window.onload = setInitialValue;
+//window.onload = setInitialValue;
 
 // Busca dados cadastrados no local storage
 function readLocalStorage() {
@@ -17,10 +17,22 @@ function saveOnLocalStorage(data) {
 }
 
 function toDo() {
+  let day = document.getElementById('seletedDay').value;
+  let beginAt = document.getElementById('beginAt').value;
+  let endAt = document.getElementById('endAt').value;
   let nameTask = document.getElementById('nameTask').value;
   let descriptionTask = document.getElementById('descriptionTask').value;
 
+  console.log(beginAt, endAt);
+
+  if (day === '0' || descriptionTask === '' || nameTask === '') {
+    alert('Escolha o dia e preencha todos os campos!');
+    return;
+  }
+
   let todo = {
+    beginAt,
+    endAt,
     title: nameTask,
     description: descriptionTask,
   };
@@ -33,23 +45,34 @@ function toDo() {
   let user = db.users.find(user => user.email === userEmail);
 
   if (user.todos) {
-    user.todos.push(todo);
+    if (user.todos[day]) {
+      user.todos[day].push(todo);
+    } else {
+      user.todos[day] = [];
+      user.todos[day].push(todo);
+    }
   } else {
-    user.todos = [];
-    user.todos.push(todo);
+    user.todos = {};
+    user.todos[day] = [];
+    user.todos[day].push(todo);
   }
 
   db.users[userIndex] = user;
 
   saveOnLocalStorage(db);
 
-  setInitialValue();
+  setInitialValue(day);
+
+  document.getElementById('nameTask').value = '';
+  document.getElementById('descriptionTask').value = '';
+
+  event.preventDefault();
 }
 
-function setInitialValue() {
+function setInitialValue(day) {
   let db = readLocalStorage();
 
-  // Elemento que renderiza todos ja cadastrados
+  // Elemento que renderiza to-dos ja cadastrados
   let divTodos = document.getElementById('todos');
 
   let response = '';
@@ -59,19 +82,25 @@ function setInitialValue() {
 
   let todos = user.todos;
 
-  if (db.session.loged && user.todos.length > 0) {
-    response += `<a class="list-group-item list-group-item-action active titleex">Tarefas</a>`;
+  if (db.session.loged && user.todos[day].length > 0) {
+    response += `<a class="list-group-item list-group-item-action active titleex">Tarefas de ${day}</a>`;
 
-    todos.forEach((todo, index) => {
+    todos[day].forEach((todo, index) => {
+      indexAndDate = {
+        index,
+        day,
+      };
+
       response += `
         <a href="#" 
         class="list-group-item list-group-item-action flex-column align-items-start">
             <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1">${todo.title}</h5>
+                <small>De ${todo.beginAt} até ${todo.endAt}</small>
             </div>
             <p class="mb-1">${todo.description}</p>
         </a>
-        <button type="button" onclick="deleteToDo(${index})"
+        <button type="button" onclick="deleteToDo(${index},'${day}')"
         class="btn-excluir">Excluir</button>
       `;
     });
@@ -80,7 +109,7 @@ function setInitialValue() {
   divTodos.innerHTML = response;
 }
 
-function deleteToDo(index) {
+function deleteToDo(index, day) {
   let db = readLocalStorage();
 
   let userEmail = db.session.email;
@@ -88,11 +117,19 @@ function deleteToDo(index) {
   let userIndex = db.users.findIndex(user => user.email === userEmail);
   let user = db.users.find(user => user.email === userEmail);
 
-  if (user.todos[index]) user.todos.splice(index, 1);
+  console.log(user.todos[day][index]);
+
+  if (user.todos[day][index]) user.todos[day].splice(index, 1);
 
   db.users[userIndex] = user;
 
   saveOnLocalStorage(db);
 
-  setInitialValue();
+  setInitialValue(day);
+}
+
+function selectedDay() {
+  var day = document.getElementById('seletedDay').value;
+
+  setInitialValue(day);
 }

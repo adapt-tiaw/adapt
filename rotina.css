@@ -21,5 +21,26 @@ body {
 .btn-excluir {
   height: 35px;
   margin-bottom: 10px;
-  outline: 0;
+  color: #495057;
+  background-color: #e9ecef;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.seletor-dia {
+  margin-bottom: 15px;
+}
+
+.clock {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 50px;
+}
+
+.clock input {
+  width: 100px;
+}
+
+.clock:first-child {
+  margin-bottom: 15px;
 }

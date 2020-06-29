@@ -7,7 +7,7 @@ function readLocalStorage() {
   if (stringData) {
     return JSON.parse(stringData);
   } else {
-    alert('Usuario não autenticado!');
+    alert('Usuário não autenticado!');
     window.location.href = 'index.html';
   }
 }

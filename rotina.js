@@ -23,12 +23,8 @@ function toDo() {
   let nameTask = document.getElementById('nameTask').value;
   let descriptionTask = document.getElementById('descriptionTask').value;
 
-  console.log(beginAt, endAt);
-
-  if (day === '0' || descriptionTask === '' || nameTask === '') {
-    alert('Escolha o dia e preencha todos os campos!');
-    return;
-  }
+  if (day === '0' || descriptionTask === '' || nameTask === '')
+    return alert('Escolha o dia e preencha todos os campos!');
 
   let todo = {
     beginAt,
@@ -82,15 +78,10 @@ function setInitialValue(day) {
 
   let todos = user.todos;
 
-  if (db.session.loged && user.todos[day].length > 0) {
+  if (db.session.loged && user.todos[day] && user.todos[day].length > 0) {
     response += `<a class="list-group-item list-group-item-action active titleex">Tarefas de ${day}</a>`;
 
     todos[day].forEach((todo, index) => {
-      indexAndDate = {
-        index,
-        day,
-      };
-
       response += `
         <a href="#" 
         class="list-group-item list-group-item-action flex-column align-items-start">
@@ -116,8 +107,6 @@ function deleteToDo(index, day) {
 
   let userIndex = db.users.findIndex(user => user.email === userEmail);
   let user = db.users.find(user => user.email === userEmail);
-
-  console.log(user.todos[day][index]);
 
   if (user.todos[day][index]) user.todos[day].splice(index, 1);
 

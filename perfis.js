@@ -36,6 +36,13 @@ function profile(prop) {
   let userIndex = db.users.findIndex(user => user.email === userEmail);
   let user = db.users.find(user => user.email === userEmail);
 
+  if (user.todos) {
+    let existTodos = confirm(
+      'Deseja excluir todas as tarefas previamente cadastradas?',
+    );
+    existTodos ? delete user.todos : null;
+  }
+
   user.profile = prop;
 
   db.users[userIndex] = user;

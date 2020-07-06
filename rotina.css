@@ -45,6 +45,6 @@ body {
   margin-bottom: 15px;
 }
 
-.link-perfis {
-  color: #fff;
+a.link-perfis {
+  color: #fff !important;
 }

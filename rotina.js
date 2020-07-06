@@ -1,4 +1,18 @@
-//window.onload = setInitialValue;
+// window.onload = showProfile;
+
+// function showProfile() {
+//   let db = readLocalStorage();
+
+//   let spanProfile = document.getElementById('perfil-escolhido');
+//   let response = '';
+
+//   let userEmail = db.session.email;
+//   let user = db.users.find(user => user.email === userEmail);
+
+//   response += `Perfil escolhido: ${user.profile}`;
+
+//   spanProfile.innerHTML = response;
+// }
 
 // Busca dados cadastrados no local storage
 function readLocalStorage() {

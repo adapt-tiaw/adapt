@@ -44,3 +44,7 @@ body {
 .clock:first-child {
   margin-bottom: 15px;
 }
+
+.link-perfis {
+  color: #fff;
+}
